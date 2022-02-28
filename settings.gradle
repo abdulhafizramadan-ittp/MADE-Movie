@@ -16,3 +16,4 @@ rootProject.name = "Movie"
 include ':app'
 include ':core-data'
 include ':core-domain'
+include ':core-resource'

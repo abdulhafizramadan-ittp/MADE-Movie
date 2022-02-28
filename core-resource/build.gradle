@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-apply from: '../shared_dependencies.gradle'
+apply from: '../shared_dependencies_feature.gradle'
 
 android {
     defaultConfig {
