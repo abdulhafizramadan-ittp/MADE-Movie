@@ -8,6 +8,7 @@ apply from: '../shared_dependencies_feature.gradle'
 
 android {
 
+    dynamicFeatures = [':feature_favorite']
     defaultConfig {
         applicationId "com.ahr.movie"
         versionCode vers.versionCode
@@ -19,4 +20,8 @@ dependencies {
     implementation project(':core-data')
     implementation project(':core-data')
     implementation project(':core-resource')
+
+    implementation deps.navigation.fragment
+    implementation deps.navigation.ui
+    implementation deps.navigation.dynamicFeatures
 }
