@@ -7,6 +7,7 @@ apply from: '../versions.gradle'
 apply from: '../shared_dependencies_feature.gradle'
 
 dependencies {
+    implementation project(':core-resource')
 
     implementation deps.legacySupport
     implementation deps.navigation.fragment

@@ -1,3 +1,4 @@
 <resources>
     <string name="hello_movie_fragment">Hello movie fragment</string>
+    <string name="hint_search_movie">Search Movie</string>
 </resources>
