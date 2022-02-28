@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/core-resource" />
             <option value="$PROJECT_DIR$/feature_favorite" />
             <option value="$PROJECT_DIR$/feature_movie" />
+            <option value="$PROJECT_DIR$/feature_tv-show" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

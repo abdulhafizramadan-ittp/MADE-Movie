@@ -22,6 +22,7 @@ dependencies {
     implementation project(':core-resource')
 
     implementation project(':feature_movie')
+    implementation project(':feature_tv-show')
 
     implementation deps.navigation.fragment
     implementation deps.navigation.ui

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Movie" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light</item>
+        <item name="colorPrimary">@color/accent</item>
         <item name="colorPrimaryVariant">@color/light</item>
         <item name="colorOnPrimary">@color/title_on_light</item>
         <!-- Secondary brand color. -->
