@@ -24,6 +24,9 @@ ext.vers = [
         // Navigation Component
         navigation: '2.4.1',
 
+        // Glide
+        glide: '4.11.0',
+
         // Unit Test
         junit: '4.13.2',
 
@@ -49,6 +52,9 @@ ext.deps = [
                 ui: "androidx.navigation:navigation-ui:$vers.navigation",
                 dynamicFeatures: "androidx.navigation:navigation-dynamic-features-fragment:$vers.navigation"
         ],
+
+        // Glide
+        glide: "com.github.bumptech.glide:glide:$vers.glide",
 
         // Unit Test
         junit: "junit:junit:$vers.junit",
