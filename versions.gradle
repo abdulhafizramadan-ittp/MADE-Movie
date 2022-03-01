@@ -66,3 +66,7 @@ ext.deps = [
         ],
         annotation: "androidx.annotation:annotation:$vers.annotation",
 ]
+
+ext.plugins = [
+        safeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:$vers.navigation"
+]
