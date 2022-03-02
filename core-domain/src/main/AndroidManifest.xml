@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ahr.core_domain">
+    package="com.ahr.movie.core_domain">
 
 </manifest>

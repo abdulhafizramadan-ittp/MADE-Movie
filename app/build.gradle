@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../versions.gradle'
@@ -19,10 +21,22 @@ android {
 
 dependencies {
     implementation project(':core-data')
+    implementation project(':core-domain')
     implementation project(':core-resource')
+
+    implementation deps.fragmentKtx
+
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.runtime
+
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
 
     implementation deps.navigation.fragment
     implementation deps.navigation.ui
     implementation deps.navigation.dynamicFeatures
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation deps.glide
+
+    implementation deps.legacySupport
 }

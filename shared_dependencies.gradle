@@ -28,6 +28,10 @@ android {
 dependencies {
 
     implementation deps.coreKtx
+
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+
     testImplementation deps.junit
     androidTestImplementation deps.extJunit
     androidTestImplementation deps.espresso.core

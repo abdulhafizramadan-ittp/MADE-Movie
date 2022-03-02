@@ -1,4 +1,4 @@
-package com.ahr.movie.search
+package com.ahr.movie.ui.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

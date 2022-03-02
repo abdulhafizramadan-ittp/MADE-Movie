@@ -2,7 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
-    
+
+    <color name="gray_200">#CCCCCC</color>
+    <color name="gray_500">#7A7A7B</color>
+
     
 <!--  BASE COLOR  -->
     <color name="accent">#CB723A</color>
@@ -11,6 +14,6 @@
 
 <!--  TEXT COLOR  -->
     <color name="title_on_light">#040506</color>
-    <color name="title_on_dark">#CCCCCC</color>
-    <color name="subtitle">#7A7A7B</color>
+    <color name="title_on_dark">@color/gray_200</color>
+    <color name="subtitle">@color/gray_500</color>
 </resources>

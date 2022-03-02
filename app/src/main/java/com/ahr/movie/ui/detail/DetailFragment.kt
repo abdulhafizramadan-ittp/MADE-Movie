@@ -1,4 +1,4 @@
-package com.ahr.movie.detail
+package com.ahr.movie.ui.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

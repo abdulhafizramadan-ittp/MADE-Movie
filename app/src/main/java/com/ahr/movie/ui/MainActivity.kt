@@ -1,9 +1,11 @@
-package com.ahr.movie
+package com.ahr.movie.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ahr.movie.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

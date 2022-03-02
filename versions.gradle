@@ -1,4 +1,7 @@
 ext.vers = [
+        // Kotlin
+        kotlin: '1.6.0',
+
         // Android
         compileSdk: 32,
 
@@ -20,12 +23,25 @@ ext.vers = [
         appCompat: '1.4.1',
         material: '1.5.0',
         constraintLayout: '2.1.3',
+        fragmentKtx: '1.4.1',
 
         // Navigation Component
         navigation: '2.4.1',
 
+        // Lifecycle
+        lifecycle: '2.4.1',
+
         // Glide
         glide: '4.11.0',
+
+        // Retrofit
+        retrofit: '2.9.0',
+
+        // Gson
+        gson: '2.9.0',
+
+        // Hilt
+        hilt: '2.40',
 
         // Unit Test
         junit: '4.13.2',
@@ -41,10 +57,17 @@ ext.deps = [
         coreKtx: "androidx.core:core-ktx:$vers.coreKtx",
         legacySupport: "androidx.legacy:legacy-support-v4:$vers.legacySupport",
 
+        // Coroutines
+        coroutines: [
+                'core': "org.jetbrains.kotlinx:kotlinx-coroutines-core:$vers.kotlin",
+                'android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$vers.kotlin",
+        ],
+
         // Layouts
         appCompat: "androidx.appcompat:appcompat:$vers.appCompat",
         material: "com.google.android.material:material:$vers.material",
         constraintLayout: "androidx.constraintlayout:constraintlayout:$vers.constraintLayout",
+        fragmentKtx: "androidx.fragment:fragment-ktx:$vers.fragmentKtx",
 
         // Navigation Component
         navigation: [
@@ -53,8 +76,29 @@ ext.deps = [
                 dynamicFeatures: "androidx.navigation:navigation-dynamic-features-fragment:$vers.navigation"
         ],
 
+        // Lifecycle
+        lifecycle: [
+                viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:$vers.lifecycle",
+                runtime: "androidx.lifecycle:lifecycle-runtime-ktx:$vers.lifecycle"
+        ],
+
         // Glide
         glide: "com.github.bumptech.glide:glide:$vers.glide",
+
+        // Retrofit
+        squareup: [
+                'retrofit': "com.squareup.retrofit2:retrofit:$vers.retrofit",
+                'gson': "com.squareup.retrofit2:converter-gson:$vers.retrofit",
+        ],
+
+        // Gson
+        gson: "com.google.code.gson:gson:$vers.gson",
+
+        // Hilt
+        hilt: [
+                android: "com.google.dagger:hilt-android:$vers.hilt",
+                compiler: "com.google.dagger:hilt-compiler:$vers.hilt"
+        ],
 
         // Unit Test
         junit: "junit:junit:$vers.junit",
