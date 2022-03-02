@@ -1,11 +1,10 @@
 package com.ahr.movie.ui.home
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +12,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ahr.movie.R
 import com.ahr.movie.core_domain.Resource
-import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.databinding.FragmentHomeBinding
 import com.ahr.movie.ui.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,13 +77,17 @@ class HomeFragment : Fragment() {
                 homeViewModel.movies
                     .collect { resource ->
                         when (resource) {
-                            is Resource.Loading -> {}
-                            is Resource.Success -> movieAdapter.setMovies(resource.data)
+                            is Resource.Loading -> {
+                                toggleShimmer(true)
+                            }
+                            is Resource.Success -> {
+                                toggleShimmer(false)
+                                movieAdapter.setMovies(resource.data)
+                            }
+                            is Resource.Error -> {
+                                toggleShimmer(false)
+                            }
                             is Resource.Empty -> {}
-                            is Resource.Error -> Log.d(
-                                TAG,
-                                "setupMovies: error=${resource.message}"
-                            )
                         }
                     }
             }
@@ -99,12 +101,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun toggleShimmer(state: Boolean) {
+        binding.homeShimmer.root.visibility = if (state) View.VISIBLE else View.GONE
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        private const val TAG = "HomeFragment"
     }
 }

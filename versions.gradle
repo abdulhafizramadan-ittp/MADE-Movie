@@ -43,6 +43,9 @@ ext.vers = [
         // Hilt
         hilt: '2.40',
 
+        // Shimmer
+        shimmer: '0.5.0',
+
         // Unit Test
         junit: '4.13.2',
 
@@ -99,6 +102,9 @@ ext.deps = [
                 android: "com.google.dagger:hilt-android:$vers.hilt",
                 compiler: "com.google.dagger:hilt-compiler:$vers.hilt"
         ],
+
+        // Shimmer
+        shimmer: "com.facebook.shimmer:shimmer:$vers.shimmer",
 
         // Unit Test
         junit: "junit:junit:$vers.junit",
