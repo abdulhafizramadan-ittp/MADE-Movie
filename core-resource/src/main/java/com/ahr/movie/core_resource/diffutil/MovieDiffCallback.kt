@@ -1,4 +1,4 @@
-package com.ahr.movie.util
+package com.ahr.movie.core_resource.diffutil
 
 import androidx.recyclerview.widget.DiffUtil
 import com.ahr.movie.core_domain.models.Movie

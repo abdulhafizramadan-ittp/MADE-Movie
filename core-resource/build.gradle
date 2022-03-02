@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: '../shared_dependencies_feature.gradle'
@@ -12,5 +14,11 @@ android {
 }
 
 dependencies {
+    implementation project(':core-domain')
+
+    implementation deps.hilt.android
+    kapt deps.hilt.compiler
+
+    implementation deps.glide
     implementation deps.shimmer
 }

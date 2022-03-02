@@ -1,13 +1,13 @@
-package com.ahr.movie.ui
+package com.ahr.movie.core_resource.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.ahr.movie.core_resource.R
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ahr.movie.core_domain.models.Movie
-import com.ahr.movie.databinding.ItemMovieBinding
-import com.ahr.movie.util.MovieDiffCallback
+import com.ahr.movie.core_resource.R
+import com.ahr.movie.core_resource.databinding.ItemMovieBinding
+import com.ahr.movie.core_resource.diffutil.MovieDiffCallback
 import com.bumptech.glide.Glide
 import javax.inject.Inject
 

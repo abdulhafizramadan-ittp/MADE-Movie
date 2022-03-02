@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.ahr.movie.R
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.databinding.FragmentHomeBinding
-import com.ahr.movie.ui.MovieAdapter
+import com.ahr.movie.core_resource.adapter.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
