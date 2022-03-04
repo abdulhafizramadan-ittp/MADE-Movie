@@ -52,7 +52,10 @@ ext.vers = [
         // Instrumentation Test
         extJunit: '1.1.3',
         espresso: '3.4.0',
-        annotation: '1.3.0'
+        annotation: '1.3.0',
+
+        // Chucker
+        chucker: '3.5.2',
 ]
 
 ext.deps = [
@@ -115,6 +118,12 @@ ext.deps = [
                 core: "androidx.test.espresso:espresso-core:$vers.espresso"
         ],
         annotation: "androidx.annotation:annotation:$vers.annotation",
+
+        // Chucker
+        chucker: [
+                library: "com.github.chuckerteam.chucker:library:$vers.chucker",
+                libraryNoOp: "com.github.chuckerteam.chucker:library-no-op:$vers.chucker",
+        ]
 ]
 
 ext.plugins = [

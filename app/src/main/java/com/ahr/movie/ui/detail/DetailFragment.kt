@@ -1,60 +1,107 @@
 package com.ahr.movie.ui.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.ahr.movie.R
+import com.ahr.movie.core_domain.Resource
+import com.ahr.movie.core_domain.models.Genre
+import com.ahr.movie.core_domain.models.MovieDetail
+import com.ahr.movie.databinding.FragmentDetailBinding
+import com.bumptech.glide.Glide
+import com.google.android.material.chip.Chip
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentDetailBinding? = null
+    private val binding: FragmentDetailBinding
+        get() = _binding!!
+
+    private val detailViewModel: DetailViewModel by viewModels()
+//    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        _binding = FragmentDetailBinding.inflate(
+            inflater,
+            container,
+            false
+        )
+        return _binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState == null) {
+            detailViewModel.getMovieDetail(566525)
+        }
+
+        observeMovieDetail()
+    }
+
+    private fun observeMovieDetail() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                detailViewModel.movieDetail
+                    .collect { resource ->
+                        when (resource) {
+                            is Resource.Loading -> {
+                                Log.d("TAG", "observeMovieDetail: Loading")
+                            }
+                            is Resource.Success -> {
+                                Log.d("TAG", "observeMovieDetail: Success")
+                                setupMovieDetail(resource.data)
+                            }
+                            is Resource.Error -> {}
+                            is Resource.Empty -> {}
+                        }
+                    }
             }
+        }
+    }
+
+    private fun setupMovieDetail(movieDetail: MovieDetail?) {
+        if (movieDetail != null) {
+            binding.apply {
+                Glide.with(this@DetailFragment)
+                    .load("http://image.tmdb.org/t/p/w500/${movieDetail.posterPath}")
+                    .placeholder(com.ahr.movie.core_resource.R.drawable.bg_loading_image)
+                    .error(com.ahr.movie.core_resource.R.drawable.bg_broken_image)
+                    .into(ivMovieDetail)
+
+                tvMovieTitle.text = movieDetail.title
+                tvMovieLanguage.text = getString(R.string.movie_language, movieDetail.originalLanguage)
+                tvMoviePopularity.text = getString(R.string.movie_popularity, movieDetail.popularity)
+                tvMovieOverview.text = movieDetail.overview
+
+                setupChipGenres(movieDetail.genres)
+            }
+        }
+    }
+
+    private fun setupChipGenres(genres: List<Genre>) {
+        genres.forEach { (name, _) ->
+            val chip = Chip(requireContext())
+            chip.text = name
+            binding.chipGenres.addView(chip)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -4,4 +4,11 @@
     <string name="favorite">Favorite</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">Search</string>
+    <string name="genres">Genres :</string>
+    <string name="other">Other :</string>
+    <string name="overview">Overview :</string>
+    <string name="desc_fab_favorite">Add movie to favorite</string>
+
+    <string name="movie_language">Language : %s</string>
+    <string name="movie_popularity">Popularity : %s</string>
 </resources>

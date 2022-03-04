@@ -2,6 +2,7 @@ package com.ahr.movie.core_domain.usecases
 
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
+import com.ahr.movie.core_domain.models.MovieDetail
 import kotlinx.coroutines.flow.Flow
 
 interface MovieUseCase {
@@ -10,7 +11,7 @@ interface MovieUseCase {
 
     fun getFavoriteMovie(): Flow<List<Movie>>
 
-    fun getDetailMovie(movieId: Int): Flow<Resource<Movie>>
+    fun getDetailMovie(movieId: Int): Flow<Resource<MovieDetail>>
 
     fun insertFavoriteMovie(movie: Movie)
 }

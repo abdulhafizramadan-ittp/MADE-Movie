@@ -2,6 +2,7 @@ package com.ahr.movie.core_domain.interactors
 
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
+import com.ahr.movie.core_domain.models.MovieDetail
 import com.ahr.movie.core_domain.repositories.IMovieRepository
 import com.ahr.movie.core_domain.usecases.MovieUseCase
 import kotlinx.coroutines.flow.Flow
@@ -15,8 +16,8 @@ class MovieInteractor @Inject constructor(private val movieRepository: IMovieRep
     override fun getFavoriteMovie(): Flow<List<Movie>> =
         movieRepository.getFavoriteMovie()
 
-    override fun getDetailMovie(movieId: Int): Flow<Resource<Movie>> =
-        movieRepository.getDetailMovie(movieId)
+    override fun getDetailMovie(movieId: Int): Flow<Resource<MovieDetail>> =
+        movieRepository.getMovieDetail(movieId)
 
     override fun insertFavoriteMovie(movie: Movie) =
         movieRepository.insertFavoriteMovie(movie)

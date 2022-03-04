@@ -2,6 +2,7 @@ package com.ahr.movie.core_domain.repositories
 
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
+import com.ahr.movie.core_domain.models.MovieDetail
 import kotlinx.coroutines.flow.Flow
 
 interface IMovieRepository {
@@ -10,7 +11,7 @@ interface IMovieRepository {
 
     fun getFavoriteMovie(): Flow<List<Movie>>
 
-    fun getDetailMovie(movieId: Int): Flow<Resource<Movie>>
+    fun getMovieDetail(movieId: Int): Flow<Resource<MovieDetail>>
 
     fun insertFavoriteMovie(movie: Movie)
 }

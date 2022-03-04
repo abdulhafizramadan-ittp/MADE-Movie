@@ -8,10 +8,10 @@ import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.core_resource.R
 import com.ahr.movie.core_resource.databinding.ItemMovieBinding
 import com.ahr.movie.core_resource.diffutil.MovieDiffCallback
+import com.ahr.movie.core_resource.listener.OnMovieClickListener
 import com.bumptech.glide.Glide
-import javax.inject.Inject
 
-class MovieAdapter @Inject constructor() : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val movieClickListener: OnMovieClickListener) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     inner class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
@@ -22,6 +22,9 @@ class MovieAdapter @Inject constructor() : RecyclerView.Adapter<MovieAdapter.Mov
                     .placeholder(R.drawable.bg_loading_image)
                     .error(R.drawable.bg_broken_image)
                     .into(ivMovie)
+            }
+            itemView.setOnClickListener {
+                movieClickListener.onMovieClickListener(movie)
             }
         }
     }

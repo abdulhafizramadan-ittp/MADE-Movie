@@ -1,6 +1,7 @@
 package com.ahr.movie.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,21 +13,21 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ahr.movie.R
 import com.ahr.movie.core_domain.Resource
+import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.databinding.FragmentHomeBinding
 import com.ahr.movie.core_resource.adapter.MovieAdapter
+import com.ahr.movie.core_resource.listener.OnMovieClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), OnMovieClickListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private val homeViewModel: HomeViewModel by viewModels()
 
-    @Inject
     lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
@@ -40,13 +41,23 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        movieAdapter = MovieAdapter(this)
+
         if (savedInstanceState == null) {
             homeViewModel.getAllMovies()
         }
 
+        observeMovies()
+
         setupMenu()
-        setupMovies()
         setupRvMovies()
+    }
+
+    override fun onMovieClickListener(movie: Movie) {
+        val toDetailFragment = HomeFragmentDirections
+            .actionHomeFragmentToDetailFragment(movie.id)
+        findNavController()
+            .navigate(toDetailFragment)
     }
 
     private fun setupMenu() {
@@ -71,25 +82,25 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun setupMovies() {
+    private fun observeMovies() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                homeViewModel.movies
-                    .collect { resource ->
-                        when (resource) {
-                            is Resource.Loading -> {
-                                toggleShimmer(true)
-                            }
-                            is Resource.Success -> {
-                                toggleShimmer(false)
-                                movieAdapter.setMovies(resource.data)
-                            }
-                            is Resource.Error -> {
-                                toggleShimmer(false)
-                            }
-                            is Resource.Empty -> {}
+                homeViewModel.movies.collect { resource ->
+                    when (resource) {
+                        is Resource.Loading -> {
+                            toggleShimmer(true)
                         }
+                        is Resource.Success -> {
+                            Log.d("TAG", "observeMovies: Movie=${resource.data}")
+                            toggleShimmer(false)
+                            movieAdapter.setMovies(resource.data)
+                        }
+                        is Resource.Error -> {
+                            toggleShimmer(false)
+                        }
+                        is Resource.Empty -> {}
                     }
+                }
             }
         }
     }

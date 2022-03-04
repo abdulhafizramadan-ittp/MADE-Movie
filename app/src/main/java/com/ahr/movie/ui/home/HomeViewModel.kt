@@ -8,6 +8,7 @@ import com.ahr.movie.core_domain.usecases.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,8 +17,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val movieUseCase: MovieUseCase) : ViewModel() {
 
     private val _movies: MutableStateFlow<Resource<List<Movie>>> = MutableStateFlow(Resource.Empty())
-    val movies: StateFlow<Resource<List<Movie>>>
-        get() = _movies
+    val movies get() = _movies.asStateFlow()
 
     fun getAllMovies() = viewModelScope.launch {
         movieUseCase.getAllMovies()

@@ -1,13 +1,13 @@
 package com.ahr.movie.core_data
 
-import com.ahr.movie.core_data.remote.ApiResponse
 import com.ahr.movie.core_data.remote.RemoteDataSource
 import com.ahr.movie.core_data.remote.response.toDomain
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
+import com.ahr.movie.core_domain.models.MovieDetail
 import com.ahr.movie.core_domain.repositories.IMovieRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,25 +19,23 @@ class MovieRepository @Inject constructor(private val remoteDataSource: RemoteDa
     override fun getAllMovies(): Flow<Resource<List<Movie>>> = flow {
         emit(Resource.Loading())
 
-        when (val apiResponse = remoteDataSource.getAllMovies().first()) {
-            is ApiResponse.Success -> emit(
-                Resource.Success(apiResponse.data.toDomain())
-            )
-            is ApiResponse.Error -> emit(
-                Resource.Error(apiResponse.errorMessage)
-            )
-            is ApiResponse.Empty -> emit(
-                Resource.Success(emptyList())
-            )
-        }
+        val response = remoteDataSource.getAllMovies()
+        emit(Resource.Success(response.toDomain()))
+    }.catch {
+        emit(Resource.Error(it.message.toString()))
     }
 
     override fun getFavoriteMovie(): Flow<List<Movie>> = flow {
 
     }
 
-    override fun getDetailMovie(movieId: Int): Flow<Resource<Movie>> = flow {
+    override fun getMovieDetail(movieId: Int): Flow<Resource<MovieDetail>> = flow {
+        emit(Resource.Loading())
 
+        val response = remoteDataSource.getMovieDetail(movieId)
+        emit(Resource.Success(response.toDomain()))
+    }.catch {
+        emit(Resource.Error(it.message.toString()))
     }
 
     override fun insertFavoriteMovie(movie: Movie) {
