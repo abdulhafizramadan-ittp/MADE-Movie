@@ -58,14 +58,12 @@ class DetailFragment : Fragment() {
                 detailViewModel.movieDetail
                     .collect { resource ->
                         when (resource) {
-                            is Resource.Loading -> {
-                                Log.d("TAG", "observeMovieDetail: Loading")
-                            }
+                            is Resource.Loading -> toggleLoading(true)
                             is Resource.Success -> {
-                                Log.d("TAG", "observeMovieDetail: Success")
+                                toggleLoading(false)
                                 setupMovieDetail(resource.data)
                             }
-                            is Resource.Error -> {}
+                            is Resource.Error -> toggleLoading(false)
                             is Resource.Empty -> {}
                         }
                     }
@@ -98,6 +96,11 @@ class DetailFragment : Fragment() {
             chip.text = name
             binding.chipGenres.addView(chip)
         }
+    }
+
+    private fun toggleLoading(state: Boolean) {
+        binding.detailContainer.visibility = if (state) View.GONE else View.VISIBLE
+        binding.detailShimmer.root.visibility = if (!state) View.GONE else View.VISIBLE
     }
 
     override fun onDestroyView() {

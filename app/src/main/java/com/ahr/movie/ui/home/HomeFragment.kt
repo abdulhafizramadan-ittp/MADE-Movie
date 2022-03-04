@@ -113,7 +113,8 @@ class HomeFragment : Fragment(), OnMovieClickListener {
     }
 
     private fun toggleShimmer(state: Boolean) {
-        binding.homeShimmer.root.visibility = if (state) View.VISIBLE else View.GONE
+        binding.rvMovie.visibility = if (state) View.GONE else View.VISIBLE
+        binding.homeShimmer.root.visibility = if (!state) View.GONE else View.VISIBLE
     }
 
     override fun onDestroyView() {
