@@ -43,9 +43,9 @@ class HomeFragment : Fragment(), OnMovieClickListener {
 
         movieAdapter = MovieAdapter(this)
 
-//        if (savedInstanceState == null) {
-//            homeViewModel.getAllMovies()
-//        }
+        if (homeViewModel.firstLoad.value) {
+            homeViewModel.getAllMovies()
+        }
 
         observeMovies()
 

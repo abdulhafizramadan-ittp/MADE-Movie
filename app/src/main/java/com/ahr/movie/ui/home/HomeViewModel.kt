@@ -19,12 +19,16 @@ class HomeViewModel @Inject constructor(private val movieUseCase: MovieUseCase) 
     private val _movies: MutableStateFlow<Resource<List<Movie>>> = MutableStateFlow(Resource.Empty())
     val movies get() = _movies.asStateFlow()
 
+    private val _firstLoad = MutableStateFlow(true)
+    val firstLoad get() = _firstLoad.asStateFlow()
+
     fun getAllMovies() = viewModelScope.launch {
         movieUseCase.getAllMovies()
             .onStart {
                 _movies.emit(Resource.Loading())
             }
             .collect {
+                _firstLoad.emit(false)
                 _movies.emit(it)
             }
     }
