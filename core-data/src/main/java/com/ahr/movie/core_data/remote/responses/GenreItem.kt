@@ -1,4 +1,4 @@
-package com.ahr.movie.core_data.remote.response
+package com.ahr.movie.core_data.remote.responses
 
 import com.ahr.movie.core_domain.models.Genre
 import com.google.gson.annotations.SerializedName

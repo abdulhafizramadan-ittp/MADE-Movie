@@ -91,7 +91,6 @@ class HomeFragment : Fragment(), OnMovieClickListener {
                             toggleShimmer(true)
                         }
                         is Resource.Success -> {
-                            Log.d("TAG", "observeMovies: Movie=${resource.data}")
                             toggleShimmer(false)
                             movieAdapter.setMovies(resource.data)
                         }

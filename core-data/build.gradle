@@ -20,6 +20,10 @@ dependencies {
     implementation deps.hilt.android
     kapt deps.hilt.compiler
 
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    kapt deps.room.compiler
+
     implementation deps.squareup.retrofit
     implementation deps.squareup.gson
     implementation deps.gson

@@ -1,7 +1,7 @@
 package com.ahr.movie.core_data.di
 
 import android.content.Context
-import com.ahr.movie.core_data.remote.service.MovieService
+import com.ahr.movie.core_data.remote.services.MovieService
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager

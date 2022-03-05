@@ -1,8 +1,8 @@
 package com.ahr.movie.core_data.remote
 
-import com.ahr.movie.core_data.remote.response.MovieDetailResponse
-import com.ahr.movie.core_data.remote.response.MovieItem
-import com.ahr.movie.core_data.remote.service.MovieService
+import com.ahr.movie.core_data.remote.responses.MovieDetailResponse
+import com.ahr.movie.core_data.remote.responses.MovieItem
+import com.ahr.movie.core_data.remote.services.MovieService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

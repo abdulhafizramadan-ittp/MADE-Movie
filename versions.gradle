@@ -46,6 +46,9 @@ ext.vers = [
         // Shimmer
         shimmer: '0.5.0',
 
+        // Room
+        room: '2.4.2',
+
         // Unit Test
         junit: '4.13.2',
 
@@ -108,6 +111,13 @@ ext.deps = [
 
         // Shimmer
         shimmer: "com.facebook.shimmer:shimmer:$vers.shimmer",
+
+        // Room
+        room: [
+                runtime: "androidx.room:room-runtime:$vers.room",
+                compiler: "androidx.room:room-compiler:$vers.room",
+                ktx: "androidx.room:room-ktx:$vers.room"
+        ],
 
         // Unit Test
         junit: "junit:junit:$vers.junit",

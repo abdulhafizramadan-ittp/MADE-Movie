@@ -13,5 +13,9 @@ interface IMovieRepository {
 
     fun getMovieDetail(movieId: Int): Flow<Resource<MovieDetail>>
 
-    fun insertFavoriteMovie(movie: Movie)
+    fun getFavoriteMovie(movieId: Int): Flow<Movie?>
+
+    suspend fun insertFavoriteMovie(movie: Movie)
+
+    suspend fun removeFavoriteMovie(movie: Movie)
 }
