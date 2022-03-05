@@ -16,5 +16,5 @@ rootProject.name = "Movie"
 include ':app'
 include ':core-data'
 include ':core-resource'
-include ':feature_favorite'
 include ':core-domain'
+include ':feature_favorite'

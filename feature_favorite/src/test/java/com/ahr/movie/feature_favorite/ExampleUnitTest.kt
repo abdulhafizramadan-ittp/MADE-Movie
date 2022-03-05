@@ -1,4 +1,4 @@
-package com.ahr.feature_favorite
+package com.ahr.movie.feature_favorite
 
 import org.junit.Test
 

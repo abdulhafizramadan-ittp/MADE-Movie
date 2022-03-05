@@ -1,4 +1,4 @@
-package com.ahr.feature_favorite
+package com.ahr.movie.feature_favorite
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ahr.feature_favorite", appContext.packageName)
+        assertEquals("com.ahr.movie.feature_favorite", appContext.packageName)
     }
 }

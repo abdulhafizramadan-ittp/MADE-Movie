@@ -43,9 +43,9 @@ class HomeFragment : Fragment(), OnMovieClickListener {
 
         movieAdapter = MovieAdapter(this)
 
-        if (savedInstanceState == null) {
-            homeViewModel.getAllMovies()
-        }
+//        if (savedInstanceState == null) {
+//            homeViewModel.getAllMovies()
+//        }
 
         observeMovies()
 
@@ -72,7 +72,7 @@ class HomeFragment : Fragment(), OnMovieClickListener {
                 }
                 R.id.favoriteFragment -> {
                     val toFavoriteFragment = HomeFragmentDirections
-                        .actionHomeFragmentToFavoriteFragment()
+                        .actionHomeFragmentToFavoriteFragment3()
                     findNavController().navigate(toFavoriteFragment)
                     true
                 }

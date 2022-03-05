@@ -32,9 +32,9 @@ dependencies {
     implementation deps.hilt.android
     kapt deps.hilt.compiler
 
-    implementation deps.navigation.fragment
-    implementation deps.navigation.ui
-    implementation deps.navigation.dynamicFeatures
+    api deps.navigation.fragment
+    api deps.navigation.ui
+    api deps.navigation.dynamicFeatures
 
     implementation deps.glide
 

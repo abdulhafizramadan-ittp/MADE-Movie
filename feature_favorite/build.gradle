@@ -10,9 +10,5 @@ dependencies {
     implementation project(":app")
 
     implementation deps.legacySupport
-    implementation deps.navigation.fragment
-    implementation deps.navigation.ui
-    implementation deps.navigation.dynamicFeatures
-
     androidTestImplementation deps.annotation
 }

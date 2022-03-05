@@ -1,4 +1,4 @@
-package com.ahr.feature_favorite
+package com.ahr.movie.feature_favorite
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
