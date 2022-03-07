@@ -1,14 +1,28 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 apply from: '../versions.gradle'
 apply from: '../shared_dependencies_feature.gradle'
 
 dependencies {
-    implementation project(":app")
+    implementation project(':app')
+    implementation project(':core-domain')
 
     implementation deps.legacySupport
+    implementation deps.fragmentKtx
+
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.runtime
+
+    implementation deps.hilt.android
+    implementation project(path: ':core-resource')
+    kapt deps.hilt.compiler
+
+    implementation deps.glide
+
     androidTestImplementation deps.annotation
 }

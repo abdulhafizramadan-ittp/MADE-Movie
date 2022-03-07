@@ -9,11 +9,11 @@ interface MovieUseCase {
 
     fun getAllMovies(): Flow<Resource<List<Movie>>>
 
-    fun getFavoriteMovie(): Flow<List<Movie>>
+    fun getFavoriteMovies(): Flow<List<Movie>>
 
     fun getDetailMovie(movieId: Int): Flow<Resource<MovieDetail>>
 
-    fun getFavoriteMovie(movieId: Int): Flow<Movie?>
+    fun getFavoriteMovies(movieId: Int): Flow<Movie?>
 
     suspend fun insertFavoriteMovie(movie: Movie)
 

@@ -7,7 +7,6 @@ import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.core_domain.models.MovieDetail
 import com.ahr.movie.core_domain.usecases.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onStart
@@ -35,7 +34,7 @@ class DetailViewModel @Inject constructor(private val movieUseCase: MovieUseCase
     }
 
     fun isFavoriteMovie(movieId: Int) = viewModelScope.launch {
-        movieUseCase.getFavoriteMovie(movieId)
+        movieUseCase.getFavoriteMovies(movieId)
             .collect {
                 _isFavorite.emit(it != null)
             }
