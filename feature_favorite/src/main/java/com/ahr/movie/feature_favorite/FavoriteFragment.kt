@@ -12,6 +12,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.core_resource.adapter.MovieAdapter
 import com.ahr.movie.core_resource.listener.OnMovieClickListener
@@ -66,8 +68,9 @@ class FavoriteFragment : Fragment(), OnMovieClickListener {
             favoriteViewModel.getFavoriteMovies()
         }
 
-        observeFavoriteMovies()
         setupRvMovies()
+        setupToolbar()
+        observeFavoriteMovies()
     }
 
     override fun onMovieClickListener(movie: Movie) {
@@ -85,6 +88,11 @@ class FavoriteFragment : Fragment(), OnMovieClickListener {
                 }
             }
         }
+    }
+
+    private fun setupToolbar() {
+        val appBarConfigurator = AppBarConfiguration(findNavController().graph)
+        binding.toolbar.setupWithNavController(findNavController(), appBarConfigurator)
     }
 
     private fun setupRvMovies() {

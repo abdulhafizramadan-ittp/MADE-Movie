@@ -62,22 +62,12 @@ class HomeFragment : Fragment(), OnMovieClickListener {
 
     private fun setupMenu() {
         binding.toolbar.setOnMenuItemClickListener {  menu ->
-            when (menu.itemId) {
-                R.id.searchFragment -> {
-                    val toSearchFragment = HomeFragmentDirections
-                        .actionHomeFragmentToSearchFragment()
-                    findNavController()
-                        .navigate(toSearchFragment)
-                    true
-                }
-                R.id.favoriteFragment -> {
-                    val toFavoriteFragment = HomeFragmentDirections
-                        .actionHomeFragmentToFavoriteFragment3()
-                    findNavController().navigate(toFavoriteFragment)
-                    true
-                }
-                else -> false
+            if (menu.itemId == R.id.favoriteFragment) {
+                val toFavoriteFragment = HomeFragmentDirections
+                    .actionHomeFragmentToFavoriteFragment3()
+                findNavController().navigate(toFavoriteFragment)
             }
+            true
         }
 
     }
