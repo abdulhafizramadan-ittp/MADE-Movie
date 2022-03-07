@@ -29,4 +29,13 @@
         android:orientation="vertical"
         tools:listitem="@layout/item_movie" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_no_data_found"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/no_data_found" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

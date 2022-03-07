@@ -84,7 +84,8 @@ class FavoriteFragment : Fragment(), OnMovieClickListener {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 favoriteViewModel.favoriteMovies.collect { favoriteMovies ->
-                    movieAdapter.setMovies(favoriteMovies)
+                        toggleLottieNoDataFound(favoriteMovies.isEmpty())
+                        movieAdapter.setMovies(favoriteMovies)
                 }
             }
         }
@@ -93,6 +94,11 @@ class FavoriteFragment : Fragment(), OnMovieClickListener {
     private fun setupToolbar() {
         val appBarConfigurator = AppBarConfiguration(findNavController().graph)
         binding.toolbar.setupWithNavController(findNavController(), appBarConfigurator)
+    }
+
+    private fun toggleLottieNoDataFound(state: Boolean) {
+        binding.rvMovie.visibility = if (!state) View.VISIBLE else View.GONE
+        binding.lottieNoDataFound.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     private fun setupRvMovies() {

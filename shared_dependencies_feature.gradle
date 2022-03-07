@@ -12,4 +12,6 @@ dependencies {
     implementation deps.appCompat
     implementation deps.material
     implementation deps.constraintLayout
+
+    implementation deps.lottie
 }

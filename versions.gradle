@@ -49,6 +49,8 @@ ext.vers = [
         // Room
         room: '2.4.2',
 
+        lottie: '5.0.2',
+
         // Unit Test
         junit: '4.13.2',
 
@@ -111,6 +113,9 @@ ext.deps = [
 
         // Shimmer
         shimmer: "com.facebook.shimmer:shimmer:$vers.shimmer",
+
+        // Lottie
+        lottie: "com.airbnb.android:lottie:$vers.lottie",
 
         // Room
         room: [
