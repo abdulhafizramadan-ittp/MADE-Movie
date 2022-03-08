@@ -38,4 +38,14 @@
         layout="@layout/home_shimmer"
         android:visibility="gone"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_no_connection"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/no_connection"
+        android:visibility="gone"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

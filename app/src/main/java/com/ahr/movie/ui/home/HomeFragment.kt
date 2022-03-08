@@ -79,13 +79,16 @@ class HomeFragment : Fragment(), OnMovieClickListener {
                     when (resource) {
                         is Resource.Loading -> {
                             toggleShimmer(true)
+                            toggleLottieNoConnection(false)
                         }
                         is Resource.Success -> {
                             toggleShimmer(false)
+                            toggleLottieNoConnection(false)
                             movieAdapter.setMovies(resource.data)
                         }
                         is Resource.Error -> {
                             toggleShimmer(false)
+                            toggleLottieNoConnection(true)
                         }
                         is Resource.Empty -> {}
                     }
@@ -104,6 +107,10 @@ class HomeFragment : Fragment(), OnMovieClickListener {
     private fun toggleShimmer(state: Boolean) {
         binding.rvMovie.visibility = if (state) View.GONE else View.VISIBLE
         binding.homeShimmer.root.visibility = if (!state) View.GONE else View.VISIBLE
+    }
+
+    private fun toggleLottieNoConnection(state: Boolean) {
+        binding.lottieNoConnection.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
