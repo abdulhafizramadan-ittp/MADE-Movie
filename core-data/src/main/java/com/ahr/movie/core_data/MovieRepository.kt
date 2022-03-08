@@ -9,7 +9,9 @@ import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
 import com.ahr.movie.core_domain.models.MovieDetail
 import com.ahr.movie.core_domain.repositories.IMovieRepository
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 

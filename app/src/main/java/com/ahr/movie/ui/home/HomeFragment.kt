@@ -1,7 +1,6 @@
 package com.ahr.movie.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.ahr.movie.R
 import com.ahr.movie.core_domain.Resource
 import com.ahr.movie.core_domain.models.Movie
-import com.ahr.movie.databinding.FragmentHomeBinding
 import com.ahr.movie.core_resource.adapter.MovieAdapter
 import com.ahr.movie.core_resource.listener.OnMovieClickListener
+import com.ahr.movie.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
