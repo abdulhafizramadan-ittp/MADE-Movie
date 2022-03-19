@@ -11,12 +11,20 @@ apply from: '../shared_dependencies_feature.gradle'
 
 android {
 
-    dynamicFeatures = [':feature_favorite']
     defaultConfig {
         applicationId "com.ahr.movie"
         versionCode vers.versionCode
         versionName vers.versionName
     }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dynamicFeatures = [':feature_favorite']
 }
 
 dependencies {

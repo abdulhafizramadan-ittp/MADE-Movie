@@ -64,6 +64,12 @@ ext.vers = [
 
         // LeakCanary
         leakcanary: '2.8.1',
+
+        // SqlCipher
+        sqlcipher: '4.5.1',
+
+        // SQLite KTX
+        sqliteKtx: '2.2.0'
 ]
 
 ext.deps = [
@@ -142,7 +148,15 @@ ext.deps = [
                 library: "com.github.chuckerteam.chucker:library:$vers.chucker",
                 libraryNoOp: "com.github.chuckerteam.chucker:library-no-op:$vers.chucker",
         ],
-        leakcanary: "com.squareup.leakcanary:leakcanary-android:$vers.leakcanary"
+
+        // Leakcanary
+        leakcanary: "com.squareup.leakcanary:leakcanary-android:$vers.leakcanary",
+
+        // Sqlcipher
+        sqlcipher: "net.zetetic:android-database-sqlcipher:$vers.sqlcipher",
+
+        // SQLite KTX
+        sqliteKtx: "androidx.sqlite:sqlite-ktx:$vers.sqliteKtx"
 ]
 
 ext.plugins = [

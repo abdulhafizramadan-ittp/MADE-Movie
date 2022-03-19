@@ -11,6 +11,16 @@ android {
     defaultConfig {
         consumerProguardFiles "consumer-rules.pro"
     }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
@@ -27,6 +37,9 @@ dependencies {
     implementation deps.squareup.retrofit
     implementation deps.squareup.gson
     implementation deps.gson
+
+    implementation deps.sqlcipher
+    implementation deps.sqliteKtx
 
     debugImplementation deps.chucker.library
     releaseImplementation deps.chucker.libraryNoOp
