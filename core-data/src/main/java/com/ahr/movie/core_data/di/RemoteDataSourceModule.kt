@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,6 +19,16 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {
+
+    @Provides
+    @Singleton
+    fun provideCertificatePinner(): CertificatePinner {
+        val hostname = "api.themoviedb.org"
+        return CertificatePinner.Builder()
+            .add(hostname, "sha256/oD/WAoRPvbez1Y2dfYfuo4yujAcYHXdv1Ivb2v2MOKk=")
+            .add(hostname, "sha256/JSMzqOOrtyOT1kmau6zKhgT676hGgczD5VMdRMyJZFA=")
+            .build()
+    }
 
     @Provides
     @Singleton
@@ -34,7 +45,7 @@ object RemoteDataSourceModule {
     @Singleton
     fun provideChuckerInterceptor(
         @ApplicationContext context: Context,
-        chuckerCollector: ChuckerCollector
+        chuckerCollector: ChuckerCollector,
     ): ChuckerInterceptor =
         ChuckerInterceptor.Builder(context)
             .collector(chuckerCollector)
@@ -46,10 +57,12 @@ object RemoteDataSourceModule {
     @Provides
     @Singleton
     fun provideChucker(
-        chuckerInterceptor: ChuckerInterceptor
+        chuckerInterceptor: ChuckerInterceptor,
+        certificatePinner: CertificatePinner
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(chuckerInterceptor)
+            .certificatePinner(certificatePinner)
             .build()
 
     @Provides
