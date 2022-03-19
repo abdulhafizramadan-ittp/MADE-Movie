@@ -61,6 +61,9 @@ ext.vers = [
 
         // Chucker
         chucker: '3.5.2',
+
+        // LeakCanary
+        leakcanary: '2.8.1',
 ]
 
 ext.deps = [
@@ -138,7 +141,8 @@ ext.deps = [
         chucker: [
                 library: "com.github.chuckerteam.chucker:library:$vers.chucker",
                 libraryNoOp: "com.github.chuckerteam.chucker:library-no-op:$vers.chucker",
-        ]
+        ],
+        leakcanary: "com.squareup.leakcanary:leakcanary-android:$vers.leakcanary"
 ]
 
 ext.plugins = [

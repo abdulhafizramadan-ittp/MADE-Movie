@@ -123,6 +123,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupChipGenres(genres: List<Genre>) {
+        binding.chipGenres.removeAllViews()
         genres.forEach { (name, _) ->
             val chip = Chip(requireContext())
             chip.text = name

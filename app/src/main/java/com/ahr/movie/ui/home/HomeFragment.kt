@@ -27,7 +27,7 @@ class HomeFragment : Fragment(), OnMovieClickListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
 
-    lateinit var movieAdapter: MovieAdapter
+    private var movieAdapter: MovieAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,7 +83,7 @@ class HomeFragment : Fragment(), OnMovieClickListener {
                         is Resource.Success -> {
                             toggleShimmer(false)
                             toggleLottieNoConnection(false)
-                            movieAdapter.setMovies(resource.data)
+                            movieAdapter?.setMovies(resource.data)
                         }
                         is Resource.Error -> {
                             toggleShimmer(false)
@@ -114,6 +114,7 @@ class HomeFragment : Fragment(), OnMovieClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        movieAdapter = null
         _binding = null
     }
 }

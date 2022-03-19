@@ -41,4 +41,6 @@ dependencies {
     implementation deps.shimmer
 
     implementation deps.legacySupport
+
+    debugImplementation deps.leakcanary
 }
