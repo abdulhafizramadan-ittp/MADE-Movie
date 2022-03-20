@@ -15,10 +15,16 @@ android {
         applicationId "com.ahr.movie"
         versionCode vers.versionCode
         versionName vers.versionName
+
+        consumerProguardFiles "proguard-rules.pro"
     }
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

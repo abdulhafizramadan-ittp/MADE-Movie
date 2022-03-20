@@ -41,6 +41,8 @@ dependencies {
     implementation deps.sqlcipher
     implementation deps.sqliteKtx
 
+    implementation deps.glide
+
     debugImplementation deps.chucker.library
     releaseImplementation deps.chucker.libraryNoOp
 }

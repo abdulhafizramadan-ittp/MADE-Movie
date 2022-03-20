@@ -11,6 +11,7 @@ apply from: '../shared_dependencies_feature.gradle'
 dependencies {
     implementation project(':app')
     implementation project(':core-domain')
+    implementation project(path: ':core-resource')
 
     implementation deps.legacySupport
     implementation deps.fragmentKtx
@@ -19,7 +20,6 @@ dependencies {
     implementation deps.lifecycle.runtime
 
     implementation deps.hilt.android
-    implementation project(path: ':core-resource')
     kapt deps.hilt.compiler
 
     implementation deps.glide
