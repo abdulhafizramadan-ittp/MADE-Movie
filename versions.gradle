@@ -63,7 +63,7 @@ ext.vers = [
         chucker: '3.5.2',
 
         // LeakCanary
-        leakcanary: '2.8.1',
+        leakcanary: '2.7',
 
         // SqlCipher
         sqlcipher: '4.5.1',
